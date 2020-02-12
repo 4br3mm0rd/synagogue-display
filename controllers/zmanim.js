@@ -13,7 +13,16 @@ module.exports = {
             elevation: 80,
             complex: true
         };
-        return getZmanimJson(options);
+        var zmanim = getZmanimJson(options).BasicZmanim;
+        var result = {
+            alot: zmanim.AlosHashachar,
+            hatzot: zmanim.Chatzos,
+            minha: zmanim.MinchaGedola,
+            candle: zmanim.CandleLighting,
+            shkia: zmanim.Sunset,
+            tzet: zmanim.Tzais
+        };
+        return result;
     },
 
     date: function(date){

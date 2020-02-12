@@ -1,8 +1,10 @@
 module.exports = function(app){
+
     // Get today's zmanim
     app.get('/zmanim', function(req, res){
         var zmanim = require('./controllers/zmanim');
         res.setHeader('Content-Type', 'application/json');
+        res.setHeader('Access-Control-Allow-Origin', "localhost");
         res.status(200).send(zmanim.zmanim(new Date()));
     });
 
@@ -10,6 +12,7 @@ module.exports = function(app){
     app.get('/zmanim/tomorrow', function(req, res){
         var zmanim = require('./controllers/zmanim');
         res.setHeader('Content-Type', 'application/json');
+        res.setHeader('Access-Control-Allow-Origin', "localhost");
 
         var tomorrow = new Date();
         tomorrow.setDate(tomorrow.getDate() + 1);
@@ -21,6 +24,7 @@ module.exports = function(app){
     app.get('/zmanim/date', function(req, res){
         var zmanim = require('./controllers/zmanim');
         res.setHeader('Content-Type', 'application/json');
+        res.setHeader('Access-Control-Allow-Origin', "localhost");
         res.status(200).send(zmanim.date(new Date()));
     });
 }
