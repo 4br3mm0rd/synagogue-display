@@ -1,0 +1,101 @@
+@font-face{
+    font-family: "ShlomoStam";
+    src: url("./font/ShlomoStam.ttf") format('truetype');
+}
+html, body{
+    margin: 0;
+    padding: 0;
+    background: #ADD8E6;
+}
+
+h1 {
+    font-size: 50px;
+    font-family: "ShlomoStam", sans-serif;
+  }
+#subtitle{
+    font-size: 20px;
+    font-family: "ShlomoStam", sans-serif;
+}
+.hebrew{
+    font-family: "ShlomoStam", sans-serif;
+}
+
+#title{
+    /* margin-top: -40px; */
+    margin-top: 20px;
+}
+
+#centerline{
+    position: absolute;
+    left: 50%;
+    top: 140px;
+    width: 1px;
+    height: calc(100% - 165px);
+    border-left: 1px dashed #ADD8E6;
+    background-image: linear-gradient(#ADD8E6, #ADD8E6), linear-gradient(blue, magenta);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    z-index: 0;
+}
+
+#french-side{
+    position: absolute;
+    left: calc(50% + 80px);
+    top: 150px;
+    width: calc(50% - 80px);
+    height: calc(100% - 155px);
+    z-index: 1;
+    font-weight: bold;
+}
+
+#french-side .line.not-time{
+    text-align: center;
+    margin-left: -80px;
+}
+
+#hebrew-side .line.not-time{
+    text-align: center;
+    margin-left: 80px;
+}
+
+.line{
+    margin-top: 36px;
+}
+
+.line.line.not-time{
+    margin-top: 10px;
+}
+
+#hebrew-side{
+    position: absolute;
+    right: calc(50% + 80px);
+    top: 150px;
+    width: calc(50% - 80px);
+    height: calc(100% - 155px);
+    z-index: 1;
+    text-align: right;
+}
+
+.times{
+    position: absolute;
+    width: 140px;
+    top: 294px;
+    left: calc(50% - 70px);
+    z-index: 1;
+}
+
+.times .time{
+    width: 100%;
+    height: 40px;
+    margin-top: 20px;
+    background: white;
+    border-radius: 20px;
+    border: 1px dashed white;
+    background-image: linear-gradient(white, white), linear-gradient(blue, magenta);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    text-align: center;
+    color: blue;
+    font-size: 18px;
+    line-height: 40px;
+}

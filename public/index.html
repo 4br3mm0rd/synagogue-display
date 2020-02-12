@@ -9,20 +9,101 @@
     <title>Zmanim</title>
 </head>
 <body>
-    <h4 class="text-center d-none mt-4" id="passouk-h">אַשְׁרֵי שֶׁאֵל יַעֲקֹב בְּעֶזְרוֹ שִׂבְרוֹ עַל יְהוָה אֱלֹהָיו</h4>
-    <h4 class="text-center mt-4" id="passouk">ויָהֹלֱא הָוהְי לַע ֹורְבִׂש ֹורְזֶעְּב בֹקֲעַי לֵאֶׁש יֵרְׁשַא</h4>
+    <h4 class="text-center d-none mt-4" id="passouk">ויָהֹלֱא הָוהְי לַע ֹורְבִׂש ֹורְזֶעְּב בֹקֲעַי לֵאֶׁש יֵרְׁשַא</h4>
     <h1 class="text-center" id="title">מורשת אליהו</h1>
-    <h4 class="text-center" id="subtitle">Synagogue Francophone - Ramat Gan</h4>
-    <script src="https://unpkg.com/kosher-zmanim/dist/kosher-zmanim.min.js"></script>
-    <script src="./js/circletype.min.js"></script>
+    <!-- <h4 class="text-center" id="subtitle">Synagogue Francophone - Ramat Gan</h4> -->
+    <h4 class="text-center" id="subtitle">אַשְׁרֵי שֶׁאֵל יַעֲקֹב בְּעֶזְרוֹ שִׂבְרוֹ עַל יְהוָה אֱלֹהָיו</h4>
+
+    <div id="french-side">
+        <div class="line not-time" id="g-date-french">
+            Mercredi 12 février 2020
+        </div>
+        <div class="line not-time" id="h-date-french">
+            17 Heshvan 5780
+        </div>
+        <div class="line not-time" id="festival-french">
+            Shabbat
+        </div>
+        <div class="line not-time" id="parasha-french">
+            Parashat Ytro
+        </div>
+        <div class="line">
+            Alot
+        </div>
+        <div class="line">
+            Hatzot
+        </div>
+        <div class="line">
+            MinHa Gedola
+        </div>
+        <div class="line">
+            Shkia
+        </div>
+        <div class="line candle-lighting">
+            Allumage des bougies
+        </div>
+        <div class="line">
+            Tzet hakokhavim
+        </div>
+    </div>
+    <div class="hebrew" id="hebrew-side">
+        <div class="line not-time" id="g-date-hebrew">
+            Mercredi 12 février 2020
+        </div>
+        <div class="line not-time" id="h-date-hebrew">
+            17 Heshvan 5780
+        </div>
+        <div class="line not-time" id="festival-hebrew">
+            Shabbat
+        </div>
+        <div class="line not-time" id="parasha-hebrew">
+            Parashat Ytro
+        </div>
+        <div class="line">
+            עלות
+        </div>
+        <div class="line">
+            חצות
+        </div>
+        <div class="line">
+            מנחה גדולה
+        </div>
+        <div class="line">
+            שקיעה
+        </div>
+        <div class="line candle-lighting">
+            הדלקת נרות
+        </div>
+        <div class="line">
+            צאת הכוכבים
+        </div>
+    </div>
+
+    <div class="times">
+        <div class="time" id="alot">
+            04:50
+        </div>
+        <div class="time" id="hatzot">
+            12:00
+        </div>
+        <div class="time" id="minha">
+            13:00
+        </div>
+        <div class="time" id="shkia">
+            17:00
+        </div>
+        <div class="time candle-lighting" id="candle-lighting">
+            17h10
+        </div>
+        <div class="time" id="tzet-hakokhavim">
+            18h10
+        </div>
+    </div>
+    <div id="centerline">
+
+    </div>
     <script>
-        new CircleType(document.querySelector('#passouk')).radius(400);
-
-        const zmanim = KosherZmanim.getZmanimJson(options);
-        console.log(zmanim);
-
-        const zmanimCalendar = new KosherZmanim.ZmanimCalendar();
-        console.log(zmanimCalendar);
+        
     </script>
 
 </body>
