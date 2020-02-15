@@ -2,6 +2,7 @@ const { ComplexZmanimCalendar, getZmanimJson } = require("kosher-zmanim");
 const Hebcal = require('hebcal');
 const months = require('../helpers/jewish-months');
 const days = require('../helpers/days');
+const gregmonths = require('../helpers/gregorian-months');
 
 function hdatecmp(hdate1, hdate2){
     return hdate1.day == hdate2.day && hdate1.month == hdate2.month && hdate1.year == hdate2.year;
@@ -26,7 +27,7 @@ function getEvent(hdate){
     for(const event in holidays_this_month){
         if(hdatecmp(hdate, holidays_this_month[event][0].date)) return holidays_this_month[event][0].desc;
     }
-    return {};
+    return null;
 }
 
 module.exports = {
@@ -63,12 +64,14 @@ module.exports = {
             day: hdate.day,
             dayFR: days.french[hdate.getDay() - 1],
             dayHE: days.hebrew[hdate.getDay() - 1],
+            gmonthFR: gregmonths.french[date.getMonth()],
+            gmonthHE: gregmonths.hebrew[date.getMonth()],
             monthFR: months.french[hdate.month - 1],
             monthHE: months.hebrew[months.french[hdate.month - 1]],
             year: hdate.year,
             parasha: hdate.getSedra('h'),
             rosh_hodesh: isRoshHodesh(hdate),
-            getEvent: getEvent(hdate)
+            event: getEvent(hdate)
         };
     }
 };

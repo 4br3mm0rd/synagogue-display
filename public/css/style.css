@@ -74,6 +74,8 @@ h1 {
     height: calc(100% - 155px);
     z-index: 1;
     text-align: right;
+    font-weight: bold;
+    direction: rtl;
 }
 
 .times{
