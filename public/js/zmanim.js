@@ -13,6 +13,7 @@ function handleZmanim(zmanim){
         var d = new Date(zmanim[key]);
         var hours = d.getHours();
         var mins = d.getMinutes() + 1;
+        if(key == "candle" || key == "havdallah") mins--; // Not adding 1 min to candle lighting (and our havdallah because our computing is already late)
         if(mins == 60) {
             mins = 0;
             hours +=  1;
@@ -34,6 +35,7 @@ function displayZmanim(zmanim){
     document.querySelector('.time#shkia').innerHTML = zmanim.shkia;
     document.querySelector('.time#candle').innerHTML = zmanim.candle;
     document.querySelector('.time#tzet').innerHTML = zmanim.tzet;
+    document.querySelector('.time#havdallah').innerHTML = zmanim.havdallah;
 }
 
 // Retrieve date info
@@ -68,13 +70,13 @@ function displayDate(info){
     document.querySelector(".hmonthHE").innerHTML = info.monthHE;
 
     // Festivals
-    if(info.event != null){
-        document.querySelector("#festival-hebrew").innerHTML = info.event[2];
-        document.querySelector("#festival-french").innerHTML = info.event[0];
+    if(info.eventText != null){
+        document.querySelector("#festival-hebrew").innerHTML = info.eventText.hebrew;
+        document.querySelector("#festival-french").innerHTML = info.eventText.english;
     }
     else{
-        document.querySelector("#festival-hebrew").innerHTML = "";
-        document.querySelector("#festival-french").innerHTML = "";
+        document.querySelector("#festival-hebrew").innerHTML = " ";
+        document.querySelector("#festival-french").innerHTML = " ";
     }
 
     // Parasha
@@ -82,9 +84,12 @@ function displayDate(info){
     for(i=0; i<info.parasha.length; i++){
         parasha += info.parasha[i] + " ";
     }
-    document.querySelector("#parasha-french").innerHTML = info.parasha[0];
-    document.querySelector("#parasha-hebrew").innerHTML = info.parasha[0];
+    document.querySelector("#parasha-french").innerHTML = info.parashaFR;
+    document.querySelector("#parasha-hebrew").innerHTML = info.parasha;
 }
+
+// TODO: when tzait hakochavim is passed, go to next day
+// TODO: timer :)
 
 getZmanim();
 getDateInfo();
