@@ -70,13 +70,13 @@ function displayDate(info){
     document.querySelector(".hmonthHE").innerHTML = info.monthHE;
 
     // Festivals
-    if(info.eventText != null){
+    if(info.eventText.english != ""){
         document.querySelector("#festival-hebrew").innerHTML = info.eventText.hebrew;
         document.querySelector("#festival-french").innerHTML = info.eventText.english;
     }
     else{
-        document.querySelector("#festival-hebrew").innerHTML = " ";
-        document.querySelector("#festival-french").innerHTML = " ";
+        document.querySelector("#festival-hebrew").innerHTML = "-";
+        document.querySelector("#festival-french").innerHTML = "-";
     }
 
     // Parasha
@@ -84,8 +84,8 @@ function displayDate(info){
     for(i=0; i<info.parasha.length; i++){
         parasha += info.parasha[i] + " ";
     }
-    document.querySelector("#parasha-french").innerHTML = info.parashaFR;
-    document.querySelector("#parasha-hebrew").innerHTML = info.parasha;
+    document.querySelector("#parasha-french").innerHTML = "Parasha: " + info.parashaFR;
+    document.querySelector("#parasha-hebrew").innerHTML = "פרשה: " + info.parasha;
 }
 
 // TODO: when tzait hakochavim is passed, go to next day
