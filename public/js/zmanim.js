@@ -1,7 +1,11 @@
+var tzet = null;
+var showingTomorrow = false;
 // Retrieve zmanim
 function getZmanim(){
+    var url = "http://localhost:8080/zmanim"
+    console.log(url);
     var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", "http://localhost:8080/zmanim", false);
+    xhttp.open("GET", url, false);
     xhttp.send();
     var response = JSON.parse(xhttp.responseText);
     displayZmanim(response);
@@ -22,6 +26,7 @@ function handleZmanim(zmanim){
         if(hours < 10) hours = "0" + hours;
         if(mins < 10) mins = "0" + mins;
         result[key] = hours + ":" + mins;
+        if(key == "havdallah") tzet = new Date(zmanim[key]);
     });
     return result;
 }
@@ -40,8 +45,10 @@ function displayZmanim(zmanim){
 
 // Retrieve date info
 function getDateInfo(){
+    var url = "http://localhost:8080/zmanim/date";
+    if(showingTomorrow) url += "/tomorrow";
     var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", "http://localhost:8080/zmanim/date", false);
+    xhttp.open("GET", url, false);
     xhttp.send();
     var response = JSON.parse(xhttp.responseText);
     displayDate(response);
@@ -49,7 +56,7 @@ function getDateInfo(){
 
 // Display date
 function displayDate(info){
-    var gdate = new Date();
+    var gdate = new Date(info.date);
 
     // Gregorian Date
     document.querySelector(".gyearFR").innerHTML = gdate.getFullYear();
@@ -100,11 +107,29 @@ function refreshClock(){
     var seconds = time.getSeconds();
     var min = time.getMinutes();
     var hours = time.getHours();
+    if(min < 10) min = "0" + min;
+    if(hours < 10) hours = "0" + hours;
 
     document.querySelector(".clock .hours").innerHTML = hours;
     document.querySelector(".clock .min").innerHTML = min;
     if(seconds % 2 == 0) document.querySelector(".clock .dots").style = "opacity: 0";
     else document.querySelector(".clock .dots").style = "opacity: 1";
 }
+window.setInterval(refreshClock, 1000);
 
-window.setInterval(refreshClock, 1);
+// Auto update zmanim
+function autoUpdate(){
+    if(tzet == null) return;
+    var time = new Date();
+    if(showingTomorrow && time.getHours() == 0){
+        showingTomorrow = false;
+        getZmanim();
+        getDateInfo();
+    }
+    else if((tzet.getHours() < time.getHours()) || (tzet.getHours() == time.getHours() && tzet.getMinutes() < time.getMinutes())){
+        showingTomorrow = true;
+        getZmanim();
+        getDateInfo();
+    }
+}
+window.setInterval(autoUpdate, 5000);

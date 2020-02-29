@@ -109,7 +109,7 @@ module.exports = {
     },
 
     date: function(date){
-        //date = new Date("December 23 2019");
+        // date = new Date("March 10 2020");
         var hdate = Hebcal.HDate(date);
         var day = hdate.getDay() == 0 ? 6:hdate.getDay()- 1;
         return {
