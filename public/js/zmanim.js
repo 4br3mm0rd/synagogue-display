@@ -93,3 +93,18 @@ function displayDate(info){
 
 getZmanim();
 getDateInfo();
+
+// Clock handling
+function refreshClock(){
+    var time = new Date();
+    var seconds = time.getSeconds();
+    var min = time.getMinutes();
+    var hours = time.getHours();
+
+    document.querySelector(".clock .hours").innerHTML = hours;
+    document.querySelector(".clock .min").innerHTML = min;
+    if(seconds % 2 == 0) document.querySelector(".clock .dots").style = "opacity: 0";
+    else document.querySelector(".clock .dots").style = "opacity: 1";
+}
+
+window.setInterval(refreshClock, 1);
